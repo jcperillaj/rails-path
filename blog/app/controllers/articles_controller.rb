@@ -5,8 +5,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
-    puts "\n"*5
-   puts "XXX"*5
   end
 
   def show
