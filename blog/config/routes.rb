@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "articles#index"
 
+  # Controller names must always be used in snake case
+
   #get "/articles", to: "articles#index"
   #get "/articles/:id", to: "articles#show"
 
