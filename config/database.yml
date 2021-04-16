@@ -52,3 +52,10 @@ test:
   username: postgres
   password: admin
   timeout: 5000
+
+
+production:
+  <<: *default
+  database: myapp_development
+  username: admin
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
