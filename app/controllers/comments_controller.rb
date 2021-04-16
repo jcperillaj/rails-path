@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
 
   def create
@@ -13,7 +12,6 @@ class CommentsController < ApplicationController
         format.html { redirect_to root_path, alert: @comment.errors.messages }
       end
     end
-
   end
 
   def destroy
@@ -24,7 +22,8 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body, :status)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:commenter, :body, :status)
+  end
 end
