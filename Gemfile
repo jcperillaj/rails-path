@@ -29,7 +29,9 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
+# Adds bootstrap to the project
+gem 'bootstrap-sass'
+# Checks the project's compliance to the official Ruby style guidelines
 gem 'rubocop', '~> 1.12', require: false
 
 group :development, :test do
