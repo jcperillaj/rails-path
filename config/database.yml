@@ -68,11 +68,15 @@ default: &default
 
 development:
   <<: *default
-  database: my_app_development
+  database: myapp_development
+  username: postgres
+  password: admin
 
 test:
   <<: *default
-  database: my_app_test
+  database: myapp_test
+  username: postgres
+  password: admin
 
 production:
   <<: *default
