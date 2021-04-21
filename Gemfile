@@ -33,6 +33,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap-sass'
 # Checks the project compliance to the official Ruby style guidelines
 gem 'rubocop', '~> 1.12', require: false
+# Adds an authenticacion mechanism for securing this app
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
