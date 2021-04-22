@@ -17,6 +17,7 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "login";
 
  /* FontAwesome for working BootSnippet :> */
 
@@ -52,7 +53,7 @@ section .section-title {
 
 #team .card {
     border: none;
-    background: #ffffff;
+    background: #ffaaff;
 }
 
 .image-flip:hover .backside,
