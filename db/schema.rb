@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_21_160720) do
+ActiveRecord::Schema.define(version: 2021_04_23_183300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,16 +21,28 @@ ActiveRecord::Schema.define(version: 2021_04_21_160720) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_articles_on_author_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
     t.text "body"
     t.integer "article_id", null: false
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["author_id"], name: "index_comments_on_author_id"
+  end
+
+  create_table "followers", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
+    t.index ["followed_id"], name: "index_followers_on_followed_id"
+    t.index ["follower_id"], name: "index_followers_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,5 +57,9 @@ ActiveRecord::Schema.define(version: 2021_04_21_160720) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "users", column: "author_id"
   add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users", column: "author_id"
+  add_foreign_key "followers", "users", column: "followed_id"
+  add_foreign_key "followers", "users", column: "follower_id"
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  #devise_for :users
   root "articles#index"
 
   # Controller names must always be used in snake case
