@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  #devise_for :users
   root "articles#index"
 
-  # Controller names must always be used in snake case
+  get "/users/:id/profile", to: "users#show"
 
-  #get "/articles", to: "articles#index"
-  #get "/articles/:id", to: "articles#show"
+  get "/users", to: 'users#index'
+
+  resources :followers, only: [:create, :destroy]
 
   resources :articles do
     resources :comments

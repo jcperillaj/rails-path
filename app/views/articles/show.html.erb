@@ -1,6 +1,6 @@
 <h1> <%= @article.title %> </h1>
 <p style="white-space: pre"> <%= simple_format @article.body %> </p>
-
+<p> <strong>Autor:</strong> <%= link_to "#{@article.author.email}", controller: 'users', action: 'show', id: @article.author.id %> </p>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li>
@@ -12,6 +12,9 @@
 
 <h2>Comments</h2>
 <%= render @article.comments %>
-
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
+<% if is_follower?(@article.author, current_user) %>
+  <h2>Add a comment:</h2>
+  <%= render "comments/form" %>
+<% else %>
+  <p> Debe seguir al autor para poder comentar </p>
+<% end %>

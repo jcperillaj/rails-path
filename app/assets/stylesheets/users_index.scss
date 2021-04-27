@@ -1,0 +1,22 @@
+#users-index {
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .card {
+    border-radius: 10px 10px 10px 10px;
+		background: #fff;
+		width: 90%;
+		text-align: center;
+    min-height: 250px;
+    min-width: 350px;
+    margin: 10px;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  }
+
+  .card:hover{
+    background-color: rgba(0,255,255,0.2);
+  }
+
+}

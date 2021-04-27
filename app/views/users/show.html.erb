@@ -1,0 +1,31 @@
+<div id="profile">
+  <div class="wrapper">
+    <div id="profile-info" class="card">
+      <h1><%= @user.email %></h1>
+      <h1>Followers: <%= @user.followers.size %></h1>
+      <h1>Following: <%= @user.followed_users.size %></h1>
+      <% if !is_follower?(@user, current_user) %>
+        <%= form_for(current_user.followed_users.build(followed_id: @user.id)) do |f| %>
+        <div><%= f.hidden_field :followed_id %></div>
+        <%= f.submit "Follow", class: "btn btn-large btn-primary", :disabled => @user.followers.any? { |follower| follower.follower_id == current_user.id } %>
+        <% end %>
+      <% end %>
+      <% if is_follower?(@user, current_user) %>
+        <%= form_for(current_user.followed_users.find_by_followed_id(@user.id),
+               html: { method: :delete }) do |f| %>
+               <%= f.submit "Unfollow", class: "btn btn-large" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="article-container">
+      <div class="scroll">
+        <% @user.articles.each do |article| %>
+        <div id="article" class="card">
+          <h1><%= article.title %></h1>
+          <p>Comments: <%= article.title %> </p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

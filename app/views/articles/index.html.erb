@@ -1,36 +1,32 @@
-
-<section id="team" class="pb-5">
-  <div class="container">
-    <h5 class="section-title h1">Articles</h5>
-    Our blog has <%= Article.public_count %> articles and counting!
-    <div class="row">
+<div id="index">
+  <section id="team" class="pb-5">
+    <div class="container">
+      <h5 class="section-title h1">Articles</h5>
+      Our blog has <%= Article.public_count %> articles and counting!
+      <div class="row">
         <% @articles.each do |article| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
-          <div  >
-            <div class="mainflip">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <a class="card-title">
-                      <h3> <%= link_to article.title, article %> </h3>
-                      <%= article.body %>
-                    </a>
-                  </div>
-                </div>
+          <div class="frontside">
+            <div class="card">
+              <div class="card-body text-center">
+                <a class="card-title">
+                  <h3> <%= link_to article.title, article %> </h3>
+                  <%= article.body %>
+                </a>
               </div>
             </div>
           </div>
         </div>
         <% end %>
-    </div>
-    <%= link_to "New Article", new_article_path %>
+      </div>
+      <%= link_to "New Article", new_article_path %>
 
-    <% flash.each do |type, msg| %>
-    <div>
-      <%= msg %>
-    </div>
-    <% end %>
+      <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+      <% end %>
 
-  </div>
+    </div>
+  </section>
 </div>
-</section>
