@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<div id="users-index">
+  <div class="wrapper">
+    <% @users.each do |user| %>
+    <%= link_to controller: 'users', action: 'show', id: user.id do %>
+    <div class="card">
+      <div><%= user.email %></div>
+      <div>Followers: <%= user.followers.size %></div>
+      <div>Following: <%= user.followed_users.size %></div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
