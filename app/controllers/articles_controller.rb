@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.author = current_user
     if @article.save
+      puts "Article id = #{@article.id}"
       redirect_to @article
     else
       render :new
