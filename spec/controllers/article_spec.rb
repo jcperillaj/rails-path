@@ -28,8 +28,14 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   context '#update' do
+
     subject {patch :update, params: { id: Article.last.id , article: article_params } }
-    it { expect(subject).to redirect_to article_url(id: Article.last.id)}
+    it 'should redirect to the updated article page' do
+      new_title = 'Another Title'
+      article_params[:title] = new_title
+      expect(subject).to redirect_to article_url(id: Article.last.id)
+      expect(Article.last.title).to eq new_title
+    end
   end
 
   context '#delete' do
