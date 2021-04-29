@@ -26,4 +26,9 @@ RSpec.describe Article, type: :model do
     it { should have_db_column(:status).of_type(:string) }
     it { should have_db_column(:author_id).of_type(:integer) }
   end
+
+  context 'Factory' do
+    subject {build(:article)}
+    it { should be_valid }
+  end
 end

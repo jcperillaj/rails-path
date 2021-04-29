@@ -97,4 +97,10 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.before :suite do
+    User.all.destroy_all
+    FactoryBot.create :user
+    FactoryBot.create :article
+  end
 end

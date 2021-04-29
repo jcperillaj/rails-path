@@ -18,4 +18,9 @@ RSpec.describe User, type: :model do
   context 'Database Columns' do
     it { should have_db_column(:email).of_type(:string) }
   end
+
+  context 'Factory' do
+    subject {build(:user)}
+    it { should be_valid }
+  end
 end
